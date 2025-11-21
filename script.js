@@ -182,5 +182,39 @@ async function init() {
     mostrarTabla(posData.headers, posData.rows);
 }
 
+// Lista de partes a mostrar
+const bodyParts = [
+    "Pelvis", "L5", "L3", "T12", "T8", "Neck",
+    "Right Shoulder", "Left Shoulder", "Right Upper Arm", "Left Upper Arm",
+    "Right Forearm", "Left Forearm", "Right Lower Leg", "Left Lower Leg",
+    "Right Foot", "Left Foot", "Right Hand", "Left Hand"
+];
+
+// Contenedor de scores por parte
+const scoresContainer = document.getElementById("scores-partes");
+
+// Función para mostrar scores por parte y método
+function mostrarScoresPartes(rows) {
+    scoresContainer.innerHTML = ""; // limpiar contenedor
+
+    bodyParts.forEach(part => {
+        const row = rows[rows.length - 1]; // última fila con puntajes
+        // Suponiendo que los encabezados en CSV son: Pelvis_REBA, Pelvis_RULA, L5_REBA, etc.
+        const rebaScore = row[`${part}_REBA`] || 0;
+        const rulaScore = row[`${part}_RULA`] || 0;
+
+        const div = document.createElement("div");
+        div.classList.add("score-part");
+
+        div.innerHTML = `
+            <h4>${part}</h4>
+            <p>REBA: <span style="color:${getScoreColor(rebaScore)}">${rebaScore}</span></p>
+            <p>RULA: <span style="color:${getScoreColor(rulaScore)}">${rulaScore}</span></p>
+        `;
+
+        scoresContainer.appendChild(div);
+    });
+}
+
 // Inicializar todo
 init();
