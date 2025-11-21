@@ -15,11 +15,11 @@ const tablaDatosContainer = document.getElementById("tabla-datos");
 // Datos de ejemplo: reemplaza con tus rutas y datos reales
 // Datos de ejemplo: reemplaza con tus rutas reales
 const fotosData = [
-    {bodyPart: "Pelvis", src: "pelvis_reba.jpg", info: "Información Pelvis REBA"},
-    {bodyPart: "Pelvis", src: "pelvis_rula.jpg", info: "Información Pelvis RULA"},
-    {bodyPart: "L5", src: "l5_reba.jpg", info: "Información L5 REBA"},
-    {bodyPart: "L5", src: "l5_rula.jpg", info: "Información L5 RULA"},
-    {bodyPart: "T8", src: "upper_reba.jpg", info: "Información Upperleg REBA"},
+    {bodyPart: "Pelvis", src: "pelvis_reba.jpeg", info: "Información Pelvis REBA"},
+    {bodyPart: "Pelvis", src: "pelvis_rula.jpeg", info: "Información Pelvis RULA"},
+    {bodyPart: "L5", src: "l5_reba.jpeg", info: "Información L5 REBA"},
+    {bodyPart: "L5", src: "l5_rula.jpeg", info: "Información L5 RULA"},
+    {bodyPart: "T8", src: "upper_reba.jpeg", info: "Información Upperleg REBA"},
     
     // Agrega más fotos para cada parte
 ];
