@@ -1,6 +1,9 @@
 // Rutas de los CSV
-const csvPosPath = "data/pos.csv";
-const csvQuatPath = "data/quat.csv";
+// Cargar CSV con puntajes por parte
+const resultadosData = await loadCSV("RESULTADOS_PUNTAJES-4.csv");
+
+
+// Mostrar scores por parte
 
 // IDs de las tarjetas
 const scoreGeneralEl = document.querySelector("#score-general .score-value");
@@ -197,11 +200,10 @@ const scoresContainer = document.getElementById("scores-partes");
 function mostrarScoresPartes(rows) {
     scoresContainer.innerHTML = ""; // limpiar contenedor
 
-    bodyParts.forEach(part => {
-        const row = rows[rows.length - 1]; // última fila con puntajes
-        // Suponiendo que los encabezados en CSV son: Pelvis_REBA, Pelvis_RULA, L5_REBA, etc.
-        const rebaScore = row[`${part}_REBA`] || 0;
-        const rulaScore = row[`${part}_RULA`] || 0;
+    rows.forEach(row => {
+        const part = row["Parte"];
+        const rebaScore = parseFloat(row["REBA"]) || 0;
+        const rulaScore = parseFloat(row["RULA"]) || 0;
 
         const div = document.createElement("div");
         div.classList.add("score-part");
@@ -215,6 +217,10 @@ function mostrarScoresPartes(rows) {
         scoresContainer.appendChild(div);
     });
 }
+
+
+// Mostrar scores por parte
+mostrarScoresPartes(resultadosData.rows);
 
 // Inicializar todo
 init();
