@@ -26,32 +26,34 @@ const fotosData = [
 
 const galleryContainer = document.getElementById("gallery-container");
 const bodyPartFilter = document.getElementById("body-part-filter");
+const methodFilter = document.getElementById("method-filter");
 
 function displayPhotos() {
     const selectedPart = bodyPartFilter.value;
-    
-    // Filtrado
-    const filtered = fotosData.filter(foto => selectedPart === "all" || foto.bodyPart === selectedPart);
+    const selectedMethod = methodFilter.value;
 
-    // Limpiar contenedor
+    const filtered = fotosData.filter(foto =>
+        (selectedPart === "all" || foto.bodyPart === selectedPart) &&
+        (selectedMethod === "all" || foto.method === selectedMethod)
+    );
+
     galleryContainer.innerHTML = "";
 
-    // Mostrar fotos filtradas
     filtered.forEach(foto => {
         const div = document.createElement("div");
         div.classList.add("gallery-item");
         div.innerHTML = `
-            <img src="${foto.src}" alt="${foto.bodyPart}">
+            <img src="fotos/${foto.src}" alt="${foto.bodyPart}">
             <p>${foto.info}</p>
         `;
         galleryContainer.appendChild(div);
     });
 }
 
-// Detectar cambios en el filtro
 bodyPartFilter.addEventListener("change", displayPhotos);
+methodFilter.addEventListener("change", displayPhotos);
 
-// Mostrar todas al cargar
+// Mostrar al cargar
 displayPhotos();
 // Función para leer CSV
 async function loadCSV(path) {
