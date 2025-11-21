@@ -52,7 +52,7 @@
 <section id="fotos-section" class="section">
     <h2>Galería de Fotos XSens (por parte del cuerpo)</h2>
 
-    <!-- Filtro por parte del cuerpo -->
+    <!-- Filtros -->
     <div class="filters">
         <label for="body-part-filter">Selecciona parte del cuerpo:</label>
         <select id="body-part-filter">
@@ -83,12 +83,18 @@
         </select>
     </div>
 
-    <!-- Contenedor de fotos -->
-    <div id="gallery-container" class="gallery">
-        <!-- Aquí se cargan las fotos dinámicamente -->
+    <label for="method-filter">Método:</label>
+        <select id="method-filter">
+            <option value="all">Todos</option>
+            <option value="REBA">REBA</option>
+            <option value="RULA">RULA</option>
+            <option value="OCRA">OCRA</option>
+        </select>
     </div>
-</section>
 
+    <!-- Contenedor de fotos -->
+    <div id="gallery-container" class="gallery"></div>
+</section>
     <!-- Sección Recomendaciones -->
     <section id="recomendaciones-section" class="section">
         <h2>Recomendaciones</h2>
